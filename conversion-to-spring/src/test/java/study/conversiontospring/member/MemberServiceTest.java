@@ -1,13 +1,20 @@
 package study.conversiontospring.member;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import study.conversiontospring.AppConfig;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
+    MemberService memberService;
 
-    MemberService memberService = new MemberServiceImpl();
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
 
     @Test
     void signUp() {
@@ -25,8 +32,7 @@ class MemberServiceTest {
     @Test
     void findMember() {
         //given
-        Member member = new Member(1L, "memberA", Grade.BASIC);
-        Member savedMember = memberService.signUp(member);
+        Member savedMember = memberService.signUp(new Member(1L, "memberA", Grade.BASIC));
         Long memberId = savedMember.getMemberId();
 
         //when

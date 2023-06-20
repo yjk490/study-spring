@@ -1,6 +1,8 @@
 package study.conversiontospring.order;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import study.conversiontospring.AppConfig;
 import study.conversiontospring.member.Grade;
 import study.conversiontospring.member.Member;
 import study.conversiontospring.member.MemberService;
@@ -11,15 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceTest {
 
-    OrderService orderService = new OrderServiceImpl();
-    MemberService memberService = new MemberServiceImpl();
+    OrderService orderService;
+    MemberService memberService;
+
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        orderService = appConfig.orderService();
+        memberService = appConfig.memberService();
+    }
 
     @Test
     void createOrder() {
         //given
-        Member member = new Member(1L,"memberA", Grade.VIP);
-        Member savedMember = memberService.signUp(member);
-        Long memberId = savedMember.getMemberId();
+        Member member = memberService.signUp(new Member(1L,"memberA", Grade.VIP));
+        Long memberId = member.getMemberId();
         String itemName = "3series";
         int itemPrice = 50000;
 
@@ -36,14 +44,14 @@ class OrderServiceTest {
     @Test
     void findOrder() {
         //given
-        Member member = new Member(1L,"memberA", Grade.VIP);
-        Member savedMember = memberService.signUp(member);
-        Order order = orderService.createOrder(savedMember.getMemberId(), "5series", 70000);
+        Member member = memberService.signUp(new Member(1L,"memberA", Grade.VIP));
+        Order order = orderService.createOrder(member.getMemberId(), "5series", 70000);
 
         //when
         Order foundOrder = orderService.findOrder(order.getOrderId());
 
         //then
+        assertNotNull(foundOrder);
         assertThat(foundOrder).isEqualTo(order);
     }
 }
