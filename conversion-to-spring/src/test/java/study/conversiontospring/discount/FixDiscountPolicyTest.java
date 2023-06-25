@@ -8,7 +8,6 @@ import study.conversiontospring.member.Member;
 import static org.assertj.core.api.Assertions.*;
 
 class FixDiscountPolicyTest {
-
     DiscountPolicy discountPolicy = new FixDiscountPolicy();
 
     @Test

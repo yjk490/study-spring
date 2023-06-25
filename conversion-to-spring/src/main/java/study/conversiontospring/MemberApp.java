@@ -3,7 +3,6 @@ package study.conversiontospring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import study.conversiontospring.member.*;
-import study.conversiontospring.order.OrderService;
 
 public class MemberApp {
     public static void main(String[] args) {
