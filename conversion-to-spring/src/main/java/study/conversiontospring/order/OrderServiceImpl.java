@@ -40,4 +40,9 @@ public class OrderServiceImpl implements OrderService {
     public Order findOrder(Long orderId) {
         return orderRepository.findById(orderId);
     }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
