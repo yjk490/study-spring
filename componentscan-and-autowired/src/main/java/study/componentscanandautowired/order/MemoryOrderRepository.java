@@ -1,10 +1,11 @@
-package study.conversiontospring.order;
+package study.componentscanandautowired.order;
 
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryOrderRepository implements OrderRepository {
     private static Map<Long, Order> store = new HashMap<>();
     private static long sequence = 0L;

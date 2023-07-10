@@ -1,5 +1,6 @@
 package study.conversiontospring.order;
 
+import org.springframework.context.annotation.ComponentScan;
 import study.conversiontospring.discount.DiscountPolicy;
 import study.conversiontospring.member.Member;
 import study.conversiontospring.member.MemberRepository;

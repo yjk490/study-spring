@@ -1,5 +1,7 @@
 package study.conversiontospring.member;
 
+import org.springframework.context.annotation.ComponentScan;
+
 public class MemberServiceImpl implements MemberService {
     // DIP 위반, 추상화(인터페이스)뿐만 아니라 구현 클래스에도 의존하고 있다.
     // OCP 위반, 확장(기능 추가)을 하는 경우 코드를 수정해야 한다.
