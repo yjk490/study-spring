@@ -9,3 +9,7 @@ Spring 프레임 워크 김영한님 강의를 들으며 학습한 내용을 저
 
 **conversion-to-spring**
  - plain-java에 Spring을 적용한 애플리케이션
+ - 스프링 컨테이너와 스프링 빈
+ - 싱글톤 패턴의 필요성과 스프링이 싱글톤을 적용하는 방법
+
+**componentscan-and-autowired**
