@@ -1,8 +1,12 @@
-package study.conversiontospring.discount;
+package study.componentscan_and_autowired.discount;
 
-import study.conversiontospring.member.Grade;
-import study.conversiontospring.member.Member;
+import org.springframework.stereotype.Component;
+import study.componentscan_and_autowired.annotation.MainDiscountPolicy;
+import study.componentscan_and_autowired.member.Grade;
+import study.componentscan_and_autowired.member.Member;
 
+@Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
     private final double discountRate = 0.1;
 
