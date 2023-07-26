@@ -1,6 +1,7 @@
 package study.componentscan_and_autowired.lifecycle;
 
 
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -26,7 +27,7 @@ public class NetworkClient {
 
     // 서비스 종료 시 호출
     public void disconnect() {
-        System.out.println("close");
+        System.out.println("close : " + url);
     }
 
     // 의존관계 주입 완료 시 호출
