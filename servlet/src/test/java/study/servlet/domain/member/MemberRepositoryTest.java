@@ -1,0 +1,50 @@
+package study.servlet.domain.member;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import study.servlet.basic.domain.member.Member;
+import study.servlet.basic.domain.member.MemberRepository;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+
+class MemberRepositoryTest {
+    MemberRepository memberRepository = MemberRepository.getInstance();
+
+    @AfterEach
+    void afterEach() {
+        memberRepository.clearStroe();
+    }
+
+    @Test
+    void save() {
+        //given
+        Member member = new Member("user", 25);
+
+        //when
+        Member savedMember = memberRepository.save(member);
+
+        //then
+        Member findMember = memberRepository.findById(savedMember.getId());
+        assertThat(findMember).isEqualTo(savedMember);
+    }
+
+    @Test
+    void findAll() {
+        //given
+        Member member1 = new Member("userA", 25);
+        Member member2 = new Member("userB", 20);
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        //when
+        List<Member> result = memberRepository.findAll();
+
+        //then
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).contains(member1, member2);
+    }
+}
