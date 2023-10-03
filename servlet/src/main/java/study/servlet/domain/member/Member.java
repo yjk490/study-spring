@@ -1,4 +1,4 @@
-package study.servlet.basic.domain.member;
+package study.servlet.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;

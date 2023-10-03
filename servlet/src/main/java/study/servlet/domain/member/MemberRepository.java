@@ -1,4 +1,4 @@
-package study.servlet.basic.domain.member;
+package study.servlet.domain.member;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,13 +30,13 @@ public class MemberRepository {
         return store.get(id);
     }
 
-    public List<Member> findAll() {
-        // store.values()를 그대로 반환하면 반환된 List<Member> 객체의 참조값과
-        // store.values()을 통해 반환된 객체의 참조값이 동일하기 때문에
-        // 외부에서 store 내부의 value에 접근할 수 있다.
-        // 따라서, 이를 방지하기 위해 ArrayList로 복사하여 반환한다.
-        return new ArrayList<>(store.values());
-    }
+    /**
+     * store.values()는 hashmap에 저장된 Member객체를 컬렉션 형태로 반환한다.
+     * 그래서 findAll()에서 store.values()를 그대로 반환하면 Repository에 저장된 Member객체에 직접 접근할 수 있다.
+     * 따라서, 이를 방지하기 위해 ArrayList로 복사하여 반환한다.
+     * @return
+     */
+    public List<Member> findAll() { return new ArrayList<>(store.values()); }
 
     public void clearStroe() {
         store.clear();

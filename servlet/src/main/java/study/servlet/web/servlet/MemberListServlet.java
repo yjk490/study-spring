@@ -1,7 +1,7 @@
 package study.servlet.web.servlet;
 
-import study.servlet.basic.domain.member.Member;
-import study.servlet.basic.domain.member.MemberRepository;
+import study.servlet.domain.member.Member;
+import study.servlet.domain.member.MemberRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
