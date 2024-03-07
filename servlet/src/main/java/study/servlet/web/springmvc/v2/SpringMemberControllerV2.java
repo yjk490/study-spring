@@ -1,4 +1,4 @@
-package study.servlet.web.springmvc.v1;
+package study.servlet.web.springmvc.v2;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,13 +8,21 @@ import study.servlet.domain.member.MemberRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
-public class SpringMemberSaveControllerV1 {
+@RequestMapping("/springmvc/v2/members")
+public class SpringMemberControllerV2 {
+
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @RequestMapping("/springmvc/v1/members/save")
-    public ModelAndView process(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/new-form")
+    public ModelAndView newForm() {
+        return new ModelAndView("new-form");
+    }
+
+    @RequestMapping("/save")
+    public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
 
@@ -26,4 +34,15 @@ public class SpringMemberSaveControllerV1 {
 
         return mv;
     }
+
+    @RequestMapping
+    public ModelAndView members(HttpServletRequest request, HttpServletResponse response) {
+        List<Member> members = memberRepository.findAll();
+
+        ModelAndView mv = new ModelAndView("members");
+        mv.addObject("members", members);
+
+        return mv;
+    }
+
 }
