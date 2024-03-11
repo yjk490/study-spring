@@ -12,7 +12,7 @@ public class LogTestController {
 
 //    클래스에 @Slf4j 사용하면 Logger 인스턴스를 생성하는 것을 생략할 수 있음
 //    private final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     @RequestMapping("/log-test")
     public String logTest() {
         String name = "Spring";
