@@ -94,6 +94,7 @@ public class BasicItemController {
         // 사용자 정의 클래스인 경우 @ModelAttribute 생략 가능.
         // 파라미터가 기본형인 경우는 @RequestParam 적용됨
 
+        // PRG 패턴
         return "redirect:/basic/items/" + item.getId();
     }
 
@@ -104,6 +105,7 @@ public class BasicItemController {
         redirectAttributes.addAttribute("itemId", savedItem.getId());
         redirectAttributes.addAttribute("status", true);
 
+        // PRG 패턴
         return "redirect:/basic/items/{itemId}";
     }
 
