@@ -94,13 +94,13 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @PostMapping("/logout")
+//    @PostMapping("/logout")
     public String logout2(HttpServletRequest request) {
         sessionManager.expireSession(request);
         return "redirect:/";
     }
 
-//    @PostMapping("/logout")
+    @PostMapping("/logout")
     public String logout3(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
