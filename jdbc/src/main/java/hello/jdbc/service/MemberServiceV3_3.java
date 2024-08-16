@@ -1,19 +1,30 @@
 package hello.jdbc.service;
 
 import hello.jdbc.domain.Member;
-import hello.jdbc.repository.MemberRepositoryV1;
-import lombok.RequiredArgsConstructor;
+import hello.jdbc.repository.MemberRepositoryV3;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
+/**
+ * 트랜잭션 - @Transactional AOP
+ */
 @Slf4j
-@RequiredArgsConstructor
-public class MemberServiceV1 {
+public class MemberServiceV3_3 {
 
-    private final MemberRepositoryV1 memberRepository;
+    private final MemberRepositoryV3 memberRepository;
 
+    public MemberServiceV3_3(MemberRepositoryV3 memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    @Transactional
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
+        businessLogic(fromId, toId, money);
+    }
+
+    private void businessLogic(String fromId, String toId, int money) throws SQLException {
         Member fromMember = memberRepository.findById(fromId);
         Member toMember = memberRepository.findById(toId);
 
